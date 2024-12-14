@@ -24,3 +24,12 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; to use with bindings
+;; flymake-goto-next-error
+;; flymake-goto-prev-error
+
+(define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+(define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
+
+
+
