@@ -1,0 +1,5 @@
+* Minimal emacs config (eglot + flymake)
+
+A minimal configuration for emacs. The creator of this config has decided to learn emacs for real (yes, including the default keybindings)...
+
+This config will be composed of mainly eglot, flymake, other built-in libraries, and magit. A truly minimum build.
