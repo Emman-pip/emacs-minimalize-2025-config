@@ -32,4 +32,7 @@
 (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
 
 
+(global-set-key "\M-n" 'flymake-goto-next-error)
+(global-set-key "\M-p" 'flymake-goto-prev-error)
+
 
