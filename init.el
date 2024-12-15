@@ -27,11 +27,6 @@
 ;; to use with bindings
 ;; flymake-goto-next-error
 ;; flymake-goto-prev-error
-
-(define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-(define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error)
-
-
 (global-set-key "\M-n" 'flymake-goto-next-error)
 (global-set-key "\M-p" 'flymake-goto-prev-error)
 
