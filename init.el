@@ -3,7 +3,7 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
-(load-theme 'wombat)
+;; (load-theme 'wombat)
 
 (set-face-attribute 'default nil :height 160)
 
@@ -23,6 +23,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; theme
+
+(use-package gruvbox-theme
+  :ensure
+  :init
+  (load-theme 'gruvbox-dark-soft))
+
 
 ;; to use with bindings
 ;; flymake-goto-next-error
