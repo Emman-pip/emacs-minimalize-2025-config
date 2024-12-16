@@ -35,8 +35,13 @@
 ;; to use with bindings
 ;; flymake-goto-next-error
 ;; flymake-goto-prev-error
-(global-set-key "\M-n" 'flymake-goto-next-error)
-(global-set-key "\M-p" 'flymake-goto-prev-error)
+(add-hook 'flymake-mode-hook
+	  (lambda() (local-set-key (kbd "M-n") 'flymake-goto-next-error)))
+(add-hook 'flymake-mode-hook
+	  (lambda() (local-set-key (kbd "M-p") 'flymake-goto-prev-error)))
+
+;; add eglot hook to python-mode
+(add-hook 'python-mode-hook 'eglot-ensure)
 
 ;; melpa
 (require 'package)
