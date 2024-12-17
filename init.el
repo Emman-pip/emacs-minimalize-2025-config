@@ -75,3 +75,6 @@
 (use-package elpy
   :ensure t)
 
+(use-package magit
+  :ensure t)
+
