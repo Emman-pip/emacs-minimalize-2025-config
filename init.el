@@ -7,16 +7,29 @@
 
 (set-face-attribute 'default nil :height 160)
 
+;; line numbers
+(defun lines()
+  "A command to enable relative line numbers."
+  (interactive)
+  (display-line-numbers-mode)
+  (menu-bar--display-line-numbers-mode-relative)
+  (line-number-mode)
+  )
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("2ff9ac386eac4dffd77a33e93b0c8236bb376c5a5df62e36d4bfa821d56e4e20" default))
  '(inhibit-default-init t)
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-echo-area-message "Emman-pip")
  '(inhibit-startup-screen t)
- '(initial-buffer-choice nil))
+ '(initial-buffer-choice nil)
+ '(package-selected-packages '(which-key web-mode elpy gruvbox-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
