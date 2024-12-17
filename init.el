@@ -63,6 +63,12 @@
 ;; add eglot hook to python-mode
 (add-hook 'python-mode-hook 'eglot-ensure)
 
+
+;; for org-mode python
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+
 ;; melpa
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
