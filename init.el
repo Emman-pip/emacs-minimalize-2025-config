@@ -16,6 +16,13 @@
   (line-number-mode)
   )
 
+(defun my-code-block(language block-name)
+  "A custom function to insert code blocks in org mode, \ninvoke using 'C-u M-x'"
+  (interactive "Mlanguage: \nMcode-block-name: ")
+  (insert (concat "#+NAME: " block-name))
+  (insert (concat "\n#+BEGIN_SRC " language))
+  (insert "\n\n#+END_SRC")
+  )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
