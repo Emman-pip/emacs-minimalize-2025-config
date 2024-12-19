@@ -1,0 +1,156 @@
+#+TITLE: Init org mode file
+#+DESCRIPTION: A init file for giving emacs another try
+#+AUTHOR: Emman-pip
+
+* My config
+
+** Customizations
+*** Removing ugly defaults
+#+NAME: Remove ugly defaults
+#+BEGIN_SRC elisp
+  ;; to remove the ugly defaults
+  (menu-bar-mode 0)
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0)
+  (set-face-attribute 'default nil :height 160)
+
+#+END_SRC
+
+*** Custom functions (interactive)
+#+NAME: custom-functions
+#+BEGIN_SRC elisp
+  ;; line numbers
+  (defun lines()
+    "A command to enable relative line numbers."
+    (interactive)
+    (display-line-numbers-mode)
+    (menu-bar--display-line-numbers-mode-relative)
+    (line-number-mode)
+    )
+
+  (defun my-code-block(language block-name)
+    "A custom function to insert code blocks in org mode, \ninvoke using 'C-u M-x'"
+    (interactive "Mlanguage: \nMcode-block-name: ")
+    (insert (concat "#+NAME: " block-name))
+    (insert (concat "\n#+BEGIN_SRC " language))
+    (insert "\n\n#+END_SRC")
+    )
+
+#+END_SRC
+
+*** IDK, custom variables
+#+NAME: custom-variables
+#+BEGIN_SRC elisp
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-safe-themes
+     '("2ff9ac386eac4dffd77a33e93b0c8236bb376c5a5df62e36d4bfa821d56e4e20" default))
+   '(inhibit-default-init t)
+   '(inhibit-startup-buffer-menu t)
+   '(inhibit-startup-echo-area-message "Emman-pip")
+   '(inhibit-startup-screen t)
+   '(initial-buffer-choice nil)
+   '(org-babel-load-languages '((lisp . t) (python . t)))
+   '(package-selected-packages
+     '(dashboard golden-ratio evil-visual-mark-mode which-key web-mode elpy gruvbox-theme)))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+
+#+END_SRC
+
+
+*** Custom theme
+#+NAME: custom theme
+#+BEGIN_SRC elisp
+  ;; theme
+  (use-package gruvbox-theme
+    :ensure
+    :init
+    (load-theme 'gruvbox-dark-soft))
+
+#+END_SRC
+
+*** Eglot stuff
+#+NAME: eglot-keybindings
+#+BEGIN_SRC elisp
+  ;; to use with bindings
+  ;; flymake-goto-next-error
+  ;; flymake-goto-prev-error
+  (add-hook 'flymake-mode-hook
+	    (lambda() (local-set-key (kbd "M-n") 'flymake-goto-next-error)))
+  (add-hook 'flymake-mode-hook
+	    (lambda() (local-set-key (kbd "M-p") 'flymake-goto-prev-error)))
+
+  ;; add eglot hook to python-mode
+
+#+END_SRC
+;; for org-mode python
+(org-babel-do-load-languages
+'org-babel-load-languages
+'((python . t)))
+
+*** Plugins
+**** Melpa repository
+#+NAME: Melpa
+#+BEGIN_SRC elisp
+  (require 'use-package)
+
+  ;; melpa
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+  ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+  ;; and `package-pinned-packages`. Most users will not need or want to do this.
+  ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+  (package-initialize)
+#+END_SRC
+
+*** Python stuff
+#+NAME: python eglot
+#+BEGIN_SRC elisp
+  (add-hook 'python-mode-hook 'eglot-ensure)
+  ;; elpy
+  (use-package elpy
+    :ensure t)
+
+#+END_SRC
+
+*** Additional Plugins
+**** Magit
+#+NAME: Magit
+#+BEGIN_SRC elisp
+  (use-package magit
+    :ensure t)
+
+#+END_SRC
+
+**** Golden ratio
+#+NAME: golden ratio
+#+BEGIN_SRC elisp
+  ;; golden-ratio
+  (use-package golden-ratio
+    :ensure t
+    :init
+    (golden-ratio-mode))
+
+#+END_SRC
+
+**** Dashboard
+#+NAME: Dashboard
+#+BEGIN_SRC elisp
+  ;; dashboard
+  (use-package dashboard
+    :ensure t
+    :config
+    (dashboard-setup-startup-hook)
+    ;; (setq initial-buffer-choice (lambda()(get-buffer *dashboard*)))
+    (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+    (setq dashboard-startup-banner 'logo)
+    )
+#+END_SRC
