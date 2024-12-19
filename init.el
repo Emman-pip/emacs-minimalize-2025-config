@@ -94,3 +94,14 @@
   :init
   (golden-ratio-mode))
 
+;; dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  ;; (setq initial-buffer-choice (lambda()(get-buffer *dashboard*)))
+  (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+  (setq dashboard-startup-banner 'logo)
+  )
+
+;; (add-hook 'server-after-make-frame-hook (lambda () (dashboard-refresh-buffer)))
