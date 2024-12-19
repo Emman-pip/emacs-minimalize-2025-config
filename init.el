@@ -36,7 +36,9 @@
  '(inhibit-startup-echo-area-message "Emman-pip")
  '(inhibit-startup-screen t)
  '(initial-buffer-choice nil)
- '(package-selected-packages '(which-key web-mode elpy gruvbox-theme)))
+ '(org-babel-load-languages '((lisp . t) (python . t)))
+ '(package-selected-packages
+   '(dashboard golden-ratio evil-visual-mark-mode which-key web-mode elpy gruvbox-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -68,6 +70,8 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)))
+
+(require 'use-package)
 
 ;; melpa
 (require 'package)
