@@ -88,3 +88,9 @@
 (use-package magit
   :ensure t)
 
+;; golden-ratio
+(use-package golden-ratio
+  :ensure t
+  :init
+  (golden-ratio-mode))
+
