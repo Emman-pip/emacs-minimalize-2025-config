@@ -102,6 +102,15 @@
 
 #+END_SRC
 
+*** Terminal
+#+NAME: Vterm-config
+#+BEGIN_SRC elisp
+  (use-package vterm
+    :ensure t
+    )
+  (use-package multi-vterm
+    :ensure t)
+#+END_SRC
 *** Additional Plugins
 **** Magit
 #+NAME: Magit
