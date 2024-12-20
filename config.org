@@ -69,12 +69,7 @@
 	    (lambda() (local-set-key (kbd "M-p") 'flymake-goto-prev-error)))
 
   ;; add eglot hook to python-mode
-
 #+END_SRC
-;; for org-mode python
-(org-babel-do-load-languages
-'org-babel-load-languages
-'((python . t)))
 
 *** Plugins
 **** Melpa repository
@@ -98,6 +93,12 @@
   ;; elpy
   (use-package elpy
     :ensure t)
+
+  ;; for org-mode python
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)))
+
 
 #+END_SRC
 
