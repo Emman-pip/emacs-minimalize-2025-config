@@ -53,7 +53,7 @@
   (use-package gruvbox-theme
     :ensure
     :init
-    (load-theme 'gruvbox-dark-soft))
+    (load-theme 'gruvbox-dark-medium))
 
 #+END_SRC
 
