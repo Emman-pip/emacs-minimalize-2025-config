@@ -130,7 +130,9 @@
     :config
     (dashboard-setup-startup-hook)
     ;; (setq initial-buffer-choice (lambda()(get-buffer *dashboard*)))
-    (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+
     (setq dashboard-startup-banner 'logo)
     )
+
+  (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 #+END_SRC
