@@ -118,6 +118,49 @@
 
 #+END_SRC
 
+*** Express JS support
+#+NAME: express config
+#+BEGIN_SRC elisp
+  (use-package pug-mode
+    :ensure t
+    )
+
+  (use-package jade-mode
+    :ensure t
+    )
+
+  (add-to-list 'auto-mode-alist '("\\.pug\\'" . pug-mode))
+  (add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
+
+  (add-hook 'javascript-mode-hook 'eglot-ensure)
+#+END_SRC
+
+*** Emmet support to PHP, HTML...
+#+NAME: Emmet support
+#+BEGIN_SRC elisp
+      (use-package emmet-mode
+	:ensure t
+	:config
+	(add-hook 'php-mode-hook 'emmet-mode)
+	(add-hook 'web-mode-hook 'emmet-mode)
+	(add-hook 'web-mode-hook 'emmet-preview-mode)
+	;; (add-hook 'php-mode-hook 'emmet-preview-mode)
+	(add-hook 'web-mode-hook 'company-mode)
+	(add-hook 'php-mode-hook 'company-mode)
+	)
+      (use-package lsp-mode
+	:ensure t
+	:config
+	(add-hook 'php-mode-hook 'lsp-mode)
+	)
+      (use-package php-mode
+	:ensure t
+	:config
+
+	(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+	)
+#+END_SRC
+
 *** Terminal
 #+NAME: Vterm-config
 #+BEGIN_SRC elisp
