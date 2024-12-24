@@ -86,6 +86,22 @@
   (package-initialize)
 #+END_SRC
 
+**** Evil mode
+#+NAME: evil-mode
+#+BEGIN_SRC elisp
+  (use-package evil
+    :ensure t
+    :config
+    ;; (setq evil-want-integration 1)
+    ;; (setq evil-want-C-u-scroll 1)
+    ;; (setq evil-want-Y-yank-to-eol t)
+    ;; (setq evil-vsplit-window-right t)
+    ;; (setq evil-split-window-below t)
+    ;; ;; (setq evil-undo-system 'undo-tree)
+    ;; (setq evil-want-keybinding nil)
+    )
+#+END_SRC
+
 *** Python stuff
 #+NAME: python eglot
 #+BEGIN_SRC elisp
