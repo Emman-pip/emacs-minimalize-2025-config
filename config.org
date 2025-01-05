@@ -142,27 +142,28 @@
 *** Emmet support to PHP, HTML...
 #+NAME: Emmet support
 #+BEGIN_SRC elisp
-      (use-package emmet-mode
-	:ensure t
-	:config
-	(add-hook 'php-mode-hook 'emmet-mode)
-	(add-hook 'web-mode-hook 'emmet-mode)
-	(add-hook 'web-mode-hook 'emmet-preview-mode)
-	;; (add-hook 'php-mode-hook 'emmet-preview-mode)
-	(add-hook 'web-mode-hook 'company-mode)
-	(add-hook 'php-mode-hook 'company-mode)
-	)
-      (use-package lsp-mode
-	:ensure t
-	:config
-	(add-hook 'php-mode-hook 'lsp-mode)
-	)
-      (use-package php-mode
-	:ensure t
-	:config
+  (use-package emmet-mode
+    :ensure t
+    :config
+    (add-hook 'php-mode-hook 'emmet-mode)
+    (add-hook 'web-mode-hook 'emmet-mode)
+    ;; (add-hook 'web-mode-hook 'emmet-preview-mode)
+    ;; (add-hook 'php-mode-hook 'emmet-preview-mode)
+    (add-hook 'web-mode-hook 'company-mode)
+    (add-hook 'php-mode-hook 'company-mode)
+    )
+    (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+  (use-package lsp-mode
+    :ensure t
+    :config
+    (add-hook 'php-mode-hook 'lsp-mode)
+    )
+  (use-package php-mode
+    :ensure t
+    :config
 
-	(add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
-	)
+    (add-to-list 'auto-mode-alist '("\\.php\\'" . php-mode))
+    )
 #+END_SRC
 
 *** Terminal
@@ -206,6 +207,38 @@
 
     (setq dashboard-startup-banner 'logo)
     )
-
   (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+#+END_SRC
+
+
+**** General.el
+#+NAME: General.el
+#+BEGIN_SRC elisp
+  (use-package general
+    :ensure t)
+#+END_SRC
+    
+**** Smart parens
+#+NAME: smartparens
+#+BEGIN_SRC elisp
+    (use-package smartparens
+      :ensure smartparens  ;; install the package
+      :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
+      :config
+      ;; load default config
+      (require 'smartparens-config))
+#+END_SRC
+
+**** EXWM
+#+NAME: EXWM
+#+BEGIN_SRC elisp
+  (use-package exwm
+    :ensure t
+    :config
+    (require 'exwm)
+    (exwm-enable)
+    )
+
+  (display-battery-mode)
+
 #+END_SRC
