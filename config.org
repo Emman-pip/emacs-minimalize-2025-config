@@ -8,11 +8,12 @@
 *** Removing ugly defaults
 #+NAME: Remove ugly defaults
 #+BEGIN_SRC elisp
-  ;; to remove the ugly defaults
-  (menu-bar-mode 0)
-  (tool-bar-mode 0)
-  (scroll-bar-mode 0)
-  (set-face-attribute 'default nil :height 160)
+    ;; to remove the ugly defaults
+    (menu-bar-mode 0)
+    (tool-bar-mode 0)
+    (scroll-bar-mode 0)
+    (set-face-attribute 'default nil :height 160)
+  (setq backup-directory-alist '(("." . "~/.emacs.d/tmp")))
 
 #+END_SRC
 
@@ -49,11 +50,15 @@
 *** Custom theme
 #+NAME: custom theme
 #+BEGIN_SRC elisp
-  ;; theme
-  (use-package gruvbox-theme
-    :ensure
+    ;; theme
+    ;; (use-package gruvbox-theme
+    ;;   :ensure
+    ;;   :init
+    ;;   (load-theme 'gruvbox-dark-medium))
+  (use-package modus-themes
+    :ensure t
     :init
-    (load-theme 'gruvbox-dark-medium))
+    (load-theme 'modus-vivendi))
 
 #+END_SRC
 
@@ -69,6 +74,7 @@
 	    (lambda() (local-set-key (kbd "M-p") 'flymake-goto-prev-error)))
 
   ;; add eglot hook to python-mode
+  (keymap-global-set "M-o" 'emmet-preview)
 #+END_SRC
 
 *** Plugins
@@ -117,7 +123,8 @@
   ;; for org-mode python
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((python . t)))
+   '((python . t) (java . t))
+   )
 
 
 #+END_SRC
@@ -232,13 +239,27 @@
 **** EXWM
 #+NAME: EXWM
 #+BEGIN_SRC elisp
-  (use-package exwm
-    :ensure t
-    :config
-    (require 'exwm)
-    (exwm-enable)
-    )
+  ;; (use-package exwm
+  ;;   :ensure t
+  ;;   :config
+  ;;   (require 'exwm)
+  ;;   (exwm-enable)
+  ;;   )
 
-  (display-battery-mode)
+  ;; (display-battery-mode)
 
+#+END_SRC
+
+**** ACE WINDOW
+#+NAME: ace
+#+BEGIN_SRC elisp
+  (use-package ace-window
+    :ensure t)
+    ;; (global-set-key (kbd "C-x o") 'ace-window)
+#+END_SRC
+*** Org mode stuff
+#+NAME: orgmode
+#+BEGIN_SRC elisp
+
+(add-hook 'org-mode-hook 'auto-fill-mode)
 #+END_SRC
