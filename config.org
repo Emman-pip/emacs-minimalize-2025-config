@@ -267,3 +267,14 @@
 
 (add-hook 'org-mode-hook 'auto-fill-mode)
 #+END_SRC
+**** Expand region
+#+NAME: expand region
+#+BEGIN_SRC elisp
+(use-package expand-region
+  :ensure t
+  :bind
+  ("M-=" . er/expand-region)
+  ("M-'" . er/mark-inside-quotes)
+  ("M-]" . er/mark-inside-pairs)
+  )
+#+END_SRC
