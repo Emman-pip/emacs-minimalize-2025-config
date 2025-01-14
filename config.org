@@ -97,15 +97,14 @@
 #+BEGIN_SRC elisp
   (use-package evil
     :ensure t
-    ;; :config
-    ;; ;
-					  ; (setq evil-want-integration 1)
-    ;; (setq evil-want-C-u-scroll 1)
-    ;; (setq evil-want-Y-yank-to-eol t)
-    ;; (setq evil-vsplit-window-right t)
-    ;; (setq evil-split-window-below t)
-    ;; ;; (setq evil-undo-system 'undo-tree)
-    ;; (setq evil-want-keybinding nil)
+    :config
+    (setq evil-want-integration 1)
+    (setq evil-want-C-u-scroll 1)
+    (setq evil-want-Y-yank-to-eol t)
+    (setq evil-vsplit-window-right t)
+    (setq evil-split-window-below t)
+    ;; (setq evil-undo-system 'undo-tree)
+    (setq evil-want-keybinding nil)
     ;; :hook
     ;; ('prog-mode . 'evil-local-mode)
     )
@@ -115,7 +114,7 @@
 *** Python stuff
 #+NAME: python eglot
 #+BEGIN_SRC elisp
-  (add-hook 'python-mode-hook 'eglot-ensure)
+  ;; (add-hook 'python-mode-hook 'eglot-ensure)
   ;; elpy
   (use-package elpy
     :ensure t)
@@ -182,6 +181,7 @@
   (use-package multi-vterm
     :ensure t)
 #+END_SRC
+
 *** Additional Plugins
 **** Magit
 #+NAME: Magit
@@ -211,8 +211,8 @@
     :config
     (dashboard-setup-startup-hook)
     ;; (setq initial-buffer-choice (lambda()(get-buffer *dashboard*)))
-
     (setq dashboard-startup-banner 'logo)
+    ;; (setq dashboard-startup-banner "~/Pictures/Wallpapers/archlinux-icon-2048x2048-q7549ths.png")
     )
   (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 #+END_SRC
@@ -228,12 +228,16 @@
 **** Smart parens
 #+NAME: smartparens
 #+BEGIN_SRC elisp
-    (use-package smartparens
-      :ensure smartparens  ;; install the package
-      :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
-      :config
-      ;; load default config
-      (require 'smartparens-config))
+  (use-package smartparens
+    :ensure smartparens  ;; install the package
+    ;; :hook (prog-mode text-mode markdown-mode) ;; add `smartparens-mode` to these hooks
+    :config
+    ;; load default config
+    (require 'smartparens-config)
+
+    :init
+    (smartparens-global-mode)
+    )
 #+END_SRC
 
 **** EXWM
