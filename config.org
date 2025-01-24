@@ -14,6 +14,7 @@
     (scroll-bar-mode 0)
     (set-face-attribute 'default nil :height 160)
   (setq backup-directory-alist '(("." . "~/.emacs.d/tmp")))
+(global-auto-revert-mode)
 
 #+END_SRC
 
@@ -89,7 +90,7 @@
   ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
   ;; and `package-pinned-packages`. Most users will not need or want to do this.
   ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-  (package-initialize)
+  ;; (package-initialize)
 #+END_SRC
 
 **** Evil mode
@@ -112,7 +113,7 @@
 #+END_SRC
 
 *** Python stuff
-#+NAME: python eglot
+#+NAME: python eglotn
 #+BEGIN_SRC elisp
   ;; (add-hook 'python-mode-hook 'eglot-ensure)
   ;; elpy
@@ -195,10 +196,11 @@
 #+NAME: golden ratio
 #+BEGIN_SRC elisp
   ;; golden-ratio
-  (use-package golden-ratio
-    :ensure t
-    :init
-    (golden-ratio-mode))
+
+  ;; (use-package golden-ratio
+  ;;   :ensure t
+  ;;   :init
+  ;;   (golden-ratio-mode))
 
 #+END_SRC
 
@@ -258,15 +260,52 @@
 #+NAME: ace
 #+BEGIN_SRC elisp
   (use-package ace-window
-    :ensure t)
+    :ensure t
     ;; (global-set-key (kbd "C-x o") 'ace-window)
+  )
 #+END_SRC
-*** Org mode stuff
+
+
+**** Ivy/counsel
+#+NAME: ivy/counsel
+#+BEGIN_SRC elisp
+  (use-package ivy
+    :ensure t
+
+    :config
+
+    (setq ivy-use-virtual-buffers t)
+    (setq enable-recursive-minibuffers t)
+    ;; enable this if you want `swiper' to use it
+    ;; (setq search-default-mode #'char-fold-to-regexp)
+    ;; (global-set-key "\C-s" 'swiper)
+    ;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
+    ;; (global-set-key (kbd "<f6>") 'ivy-resume)
+    ;; (global-set-key (kbd "M-x") 'counsel-M-x)
+    ;; (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+    ;; (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+    ;; (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+    ;; (global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
+    ;; (global-set-key (kbd "<f1> l") 'counsel-find-library)
+    ;; (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+    ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+    ;; (global-set-key (kbd "C-c g") 'counsel-git)
+    ;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
+    ;; (global-set-key (kbd "C-c k") 'counsel-ag)
+    ;; (global-set-key (kbd "C-x l") 'counsel-locate)
+    ;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+    ;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+    :init
+    (ivy-mode)
+    )
+#+END_SRC
+
+**** Org mode stuff
 #+NAME: orgmode
 #+BEGIN_SRC elisp
-
 (add-hook 'org-mode-hook 'auto-fill-mode)
 #+END_SRC
+
 **** Expand region
 #+NAME: expand region
 #+BEGIN_SRC elisp
@@ -277,4 +316,29 @@
   ("M-'" . er/mark-inside-quotes)
   ("M-]" . er/mark-inside-pairs)
   )
+#+END_SRC
+
+**** Snippets
+#+NAME: yas
+#+BEGIN_SRC elisp
+  ;; (use-package yasnippet
+    ;; :ensure t
+    ;; :bind
+    ;; ("M-s" . yas-insert-snippet)
+    ;; )
+
+  ;; (yas-reload-all)
+  ;; (add-hook 'prog-mode-hook #'yas-minor-mode)
+
+
+#+END_SRC
+
+**** Multiple cursors
+#+NAME: multi cursor
+#+BEGIN_SRC elisp
+    (use-package multiple-cursors
+      :ensure t
+    :bind
+    ("M-SPC" . set-rectangular-region-anchor)
+      )
 #+END_SRC

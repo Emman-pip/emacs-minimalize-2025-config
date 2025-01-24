@@ -12,7 +12,8 @@
  '(inhibit-startup-echo-area-message "Emman-pip")
  '(org-babel-load-languages '((lisp . t) (python . t)))
  '(package-selected-packages
-   '(modus-themes magit lsp-ui tree-sitter-langs tree-sitter ace-window smartparens general lsp-mode php-mode flymake-php company-phpactor phpactor prettier emmet-mode multiple-cursors jade-mode pug-mode multi-vterm vterm evil-mode all-the-icons dashboard golden-ratio evil-visual-mark-mode which-key web-mode elpy gruvbox-theme)))
+   '(surround lsp-tailwindcss yasnippet-snippets yassnippet expand-region elpy evil-surround format-all swiper-helm ivy modus-themes magit lsp-ui tree-sitter-langs tree-sitter ace-window smartparens general lsp-mode php-mode flymake-php company-phpactor phpactor emmet-mode multiple-cursors jade-mode pug-mode multi-vterm vterm evil-mode all-the-icons dashboard golden-ratio evil-visual-mark-mode which-key web-mode gruvbox-theme))
+ '(sp-base-key-bindings 'sp))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
